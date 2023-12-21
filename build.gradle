@@ -1,5 +1,9 @@
 plugins {
     id 'java'
+    id 'jacoco'
+}
+jacoco {
+    toolVersion = "0.8.7"
 }
 
 repositories {
@@ -23,7 +27,9 @@ tasks.withType(JavaCompile) {
 
 test {
     useJUnitPlatform()
+    finalizedBy jacocoTestReport
 }
+
 
 tasks.withType(Test) {
     systemProperty "file.encoding", "UTF-8"
